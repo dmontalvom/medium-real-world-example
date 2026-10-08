@@ -1,0 +1,1 @@
+alter table articles add column views int default 0;

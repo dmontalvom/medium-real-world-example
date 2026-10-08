@@ -12,7 +12,7 @@
         <id column="userId" property="id"/>
         <result column="userUsername" property="username"/>
         <result column="userBio" property="bio"/>
-        <result column="userImage" property="image"/>
+        <result column="userImage" property="image"/>s
     </resultMap>
 
     <resultMap id="articleData" type="io.spring.application.data.ArticleData">
@@ -21,6 +21,7 @@
         <result column="articleTitle" property="title"/>
         <result column="articleDescription" property="description"/>
         <result column="articleBody" property="body"/>
+        <result column="views" property="views"/>
         <result column="articleCreatedAt" property="createdAt"/>
         <result column="articleUpdatedAt" property="updatedAt"/>
         <association property="profileData" resultMap="transfer.data.profileData"/>

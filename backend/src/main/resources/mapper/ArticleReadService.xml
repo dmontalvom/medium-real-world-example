@@ -16,6 +16,7 @@
         A.body articleBody,
         A.created_at articleCreatedAt,
         A.updated_at articleUpdatedAt,
+        A.views views,
         T.name tagName,
         <include refid="profileColumns"/>
         from

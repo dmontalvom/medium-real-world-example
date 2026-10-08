@@ -54,4 +54,15 @@ public class MyBatisArticleRepository implements ArticleRepository {
   public void remove(Article article) {
     articleMapper.delete(article.getId());
   }
+
+  @Override
+  @Transactional
+  public Optional<Article> addView(String slug) {
+    if (articleMapper.findBySlug(slug) == null) {
+      return Optional.empty();
+    } else {
+      articleMapper.addView(slug);
+      return Optional.of(articleMapper.findBySlug(slug));
+    }
+  }
 }
