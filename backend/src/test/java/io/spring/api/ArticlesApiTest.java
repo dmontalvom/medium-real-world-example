@@ -66,6 +66,7 @@ public class ArticlesApiTest extends TestWithCurrentUser {
             new DateTime(),
             new DateTime(),
             tagList,
+            0,
             new ProfileData("userid", user.getUsername(), user.getBio(), user.getImage(), false));
 
     when(articleCommandService.createArticle(any(), any()))
@@ -135,6 +136,7 @@ public class ArticlesApiTest extends TestWithCurrentUser {
             new DateTime(),
             new DateTime(),
             asList(tagList),
+            0,
             new ProfileData("userid", user.getUsername(), user.getBio(), user.getImage(), false));
 
     when(articleQueryService.findBySlug(eq(Article.toSlug(title)), any()))

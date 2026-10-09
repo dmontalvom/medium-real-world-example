@@ -24,5 +24,4 @@ public interface ArticleMapper {
   void delete(@Param("id") String id);
 
   void addView(@Param("slug") String slug);
-
 }

@@ -22,6 +22,7 @@ public class TestHelper {
         now,
         now,
         new ArrayList<>(),
+        0,
         new ProfileData(user.getId(), user.getUsername(), user.getBio(), user.getImage(), false));
   }
 
@@ -37,6 +38,7 @@ public class TestHelper {
         article.getCreatedAt(),
         article.getUpdatedAt(),
         Arrays.asList("joda"),
+        0,
         new ProfileData(user.getId(), user.getUsername(), user.getBio(), user.getImage(), false));
   }
 }

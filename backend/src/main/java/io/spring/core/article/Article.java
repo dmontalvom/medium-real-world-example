@@ -21,7 +21,7 @@ public class Article {
   private String title;
   private String description;
   private String body;
-  private int views;
+  private int viewCount;
   private List<Tag> tags;
   private DateTime createdAt;
   private DateTime updatedAt;

@@ -62,6 +62,7 @@ public class ArticleFavoriteApiTest extends TestWithCurrentUser {
             article.getCreatedAt(),
             article.getUpdatedAt(),
             article.getTags().stream().map(Tag::getName).collect(Collectors.toList()),
+            0,
             new ProfileData(
                 anotherUser.getId(),
                 anotherUser.getUsername(),

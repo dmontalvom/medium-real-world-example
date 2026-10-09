@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Commands
 
-Java 11, Gradle wrapper. Spring Boot 2.6 + MyBatis + Netflix DGS (GraphQL) + Flyway + SQLite.
+Java 17, Gradle wrapper. Spring Boot 2.6 + MyBatis + Netflix DGS (GraphQL) + Flyway + SQLite.
 
 - Run app: `./gradlew bootRun` (http://localhost:8080/tags; creates `dev.db` SQLite file in the repo root)
 - All tests (what CI runs): `./gradlew clean test`
@@ -14,7 +14,6 @@ Java 11, Gradle wrapper. Spring Boot 2.6 + MyBatis + Netflix DGS (GraphQL) + Fly
 - Docker image: `./gradlew bootBuildImage --imageName spring-boot-realworld-example-app`
 - `./gradlew clean` also deletes `./dev.db`.
 
-Note: `build.gradle` currently has an uncommitted change that misspells `mavenCentral()` as `mavenentral()`, which breaks dependency resolution — fix it before building.
 
 ## Architecture
 

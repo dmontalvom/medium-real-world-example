@@ -22,7 +22,7 @@ public class ArticleData implements io.spring.application.Node {
   private DateTime createdAt;
   private DateTime updatedAt;
   private List<String> tagList;
-  private int views;
+  private int viewCount;
 
   @JsonProperty("author")
   private ProfileData profileData;
