@@ -1,1 +1,1 @@
-alter table articles add column view_count int default 0;
+alter table articles add column view_count int not null default 0;

@@ -3,7 +3,6 @@ package io.spring.application.article;
 import io.spring.core.article.Article;
 import io.spring.core.article.ArticleRepository;
 import io.spring.core.user.User;
-import java.util.Optional;
 import javax.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -37,7 +36,7 @@ public class ArticleCommandService {
     return article;
   }
 
-  public Optional<Article> viewArticle(String articletSlug) {
-    return articleRepository.addView(articletSlug);
+  public boolean viewArticle(String slug) {
+    return articleRepository.addView(slug);
   }
 }

@@ -42,6 +42,7 @@
         A.user_id articleUserId,
         A.created_at articleCreatedAt,
         A.updated_at articleUpdatedAt,
+        A.view_count viewCount,
         T.id tagId,
         T.name tagName
         from articles A
@@ -63,9 +64,9 @@
         where A.slug = #{slug}
     </select>
 
-  <update id="addView">
-    update articles set view_count = view_count + 1 where slug = #{slug}
-  </update>
+    <update id="addView">
+        update articles set view_count = view_count + 1 where slug = #{slug}
+    </update>
 
     <resultMap id="article" type="io.spring.core.article.Article">
         <id column="articleId" property="id"/>

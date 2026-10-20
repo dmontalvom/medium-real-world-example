@@ -379,6 +379,7 @@ public class ArticleDatafetcher {
         .tagList(articleData.getTagList())
         .title(articleData.getTitle())
         .updatedAt(ISODateTimeFormat.dateTime().withZoneUTC().print(articleData.getUpdatedAt()))
+        .viewCount(articleData.getViewCount())
         .build();
   }
 }

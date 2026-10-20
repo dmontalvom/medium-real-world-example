@@ -63,4 +63,20 @@ public class MyBatisArticleRepositoryTest extends DbTestBase {
     articleRepository.remove(article);
     Assertions.assertFalse(articleRepository.findById(article.getId()).isPresent());
   }
+
+  @Test
+  public void should_increment_view_count() {
+    articleRepository.save(article);
+
+    Assertions.assertTrue(articleRepository.addView(article.getSlug()));
+    Assertions.assertTrue(articleRepository.addView(article.getSlug()));
+
+    Article fetched = articleRepository.findBySlug(article.getSlug()).get();
+    Assertions.assertEquals(2, fetched.getViewCount());
+  }
+
+  @Test
+  public void should_not_add_view_to_unknown_article() {
+    Assertions.assertFalse(articleRepository.addView("not-exists"));
+  }
 }

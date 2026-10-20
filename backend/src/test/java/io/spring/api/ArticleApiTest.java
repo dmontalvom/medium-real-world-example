@@ -84,6 +84,34 @@ public class ArticleApiTest extends TestWithCurrentUser {
   }
 
   @Test
+  public void should_view_article_success() throws Exception {
+    Article article =
+        new Article("Test New Article", "Desc", "Body", Arrays.asList("java"), user.getId());
+    ArticleData articleData = TestHelper.getArticleDataFromArticleAndUser(article, user);
+    articleData.setViewCount(1);
+
+    when(articleCommandService.viewArticle(eq(article.getSlug()))).thenReturn(true);
+    when(articleQueryService.findBySlug(eq(article.getSlug()), eq(null)))
+        .thenReturn(Optional.of(articleData));
+
+    RestAssuredMockMvc.when()
+        .post("/articles/{slug}/viewed", article.getSlug())
+        .then()
+        .statusCode(200)
+        .body("article.slug", equalTo(article.getSlug()))
+        .body("article.viewCount", equalTo(1));
+
+    verify(articleCommandService).viewArticle(eq(article.getSlug()));
+  }
+
+  @Test
+  public void should_404_when_viewing_unknown_article() throws Exception {
+    when(articleCommandService.viewArticle(anyString())).thenReturn(false);
+
+    RestAssuredMockMvc.when().post("/articles/not-exists/viewed").then().statusCode(404);
+  }
+
+  @Test
   public void should_update_article_content_success() throws Exception {
     List<String> tagList = Arrays.asList("java", "spring", "jpg");
 

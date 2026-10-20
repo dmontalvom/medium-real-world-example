@@ -60,13 +60,12 @@ public class ArticleApi {
   @PostMapping(path = "viewed")
   public ResponseEntity<?> viewArticle(
       @PathVariable("slug") String slug, @AuthenticationPrincipal User user) {
-    return articleCommandService
-        .viewArticle(slug)
-        .map(
-            article -> {
-              return ResponseEntity.ok(
-                  articleResponse(articleQueryService.findBySlug(slug, user).get()));
-            })
+    if (!articleCommandService.viewArticle(slug)) {
+      throw new ResourceNotFoundException();
+    }
+    return articleQueryService
+        .findBySlug(slug, user)
+        .map(articleData -> ResponseEntity.ok(articleResponse(articleData)))
         .orElseThrow(ResourceNotFoundException::new);
   }
 
